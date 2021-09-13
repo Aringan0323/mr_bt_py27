@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 '''
 
@@ -82,7 +82,6 @@ from nodes.action_nodes.basic_movement import *
 from nodes.update_nodes.basic_updates import *
 from nodes.update_nodes.movement_control_updates import *
 from nodes.update_nodes.odom_updates import *
-from nodes.update_nodes.cv_updates import *
 from nodes.update_nodes.scan_updates import *
 
 from nodes.conditional_nodes.scan_conditionals import *
