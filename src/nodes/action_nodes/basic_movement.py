@@ -53,7 +53,7 @@ class LinearDynamic(Action):
 
         self.twist = Twist()
 
-        self.pub = self.rospy.publisher('/cmd_vel', Twist, queue_size=10)
+        self.pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 
 
     def tick(self, blackboard):

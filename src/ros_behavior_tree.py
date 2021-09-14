@@ -3,6 +3,8 @@
 import rospy
 import message_filters
 
+from std_msgs.msg import Byte
+
 
 
 
@@ -54,8 +56,10 @@ class ROSBehaviorTree:
 
                 self.blackboard[var] = None
 
+        self.tick_sub = rospy.Subscriber('/tick', Byte, self.tick_root)
 
-    def tick_root(self):
+
+    def tick_root(self, msg):
 
         status = self.root.tick(self.blackboard)
 
@@ -70,13 +74,5 @@ class ROSBehaviorTree:
 
         self.blackboard[var] = msg
 
-        now = rospy.get_time()
-
-        # Ticks the root periodically to preserve the tick rate.
-        if (now - self.last_tick_time) >= self.rate:
-
-            self.tick_root()
-
-            self.last_tick_time = now
         
     
