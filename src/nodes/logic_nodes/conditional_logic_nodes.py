@@ -3,7 +3,7 @@
 import sys
 sys.path.append("..") # Adds higher directory to python modules path.
 
-from abc import ABC, abstractmethod
+from abc import  abstractmethod
 from ..nodes import ParentNode
 
 

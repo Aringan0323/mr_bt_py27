@@ -61,18 +61,18 @@ type: LinearAngularDynamic" shape=oval]
 	item_follower -> follow_wall
 	Blackboard [label="BLACKBOARD
 
-detector_label_dict  :  None
-/raspicam_node/image/compressed  :  CompressedImage
-detection  :  None
-_  :  None
-item_err  :  None
 static_lin  :  0.1
-linear_pid  :  None
-angular_pid  :  None
-/scan  :  LaserScan
-avg_front_dist  :  None
 nearest_dist  :  None
+avg_front_dist  :  None
+item_err  :  None
+angular_pid  :  None
+detection  :  None
+linear_pid  :  None
+/scan  :  LaserScan
 nearest_wall_angle  :  None
+/raspicam_node/image/compressed  :  CompressedImage
+_  :  None
+detector_label_dict  :  None
 " shape=rectangle]
 	Blackboard -> item_follower
 }

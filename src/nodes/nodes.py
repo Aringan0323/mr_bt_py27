@@ -2,12 +2,12 @@
 
 import rospy
 
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 import random
 from concurrent.futures import ThreadPoolExecutor
 
 
-class Node(ABC):
+class Node(object):
     '''
     The Node class is an abstract class for every type of node in the behavior tree.
     This class is not meant to be initialized and instead used as a blueprint for other types
@@ -42,7 +42,7 @@ class ParentNode(Node):
 
     def __init__(self, children):
 
-        super().__init__()
+        super(Node, self).__init__()
 
         self.num_children = len(children)
         
@@ -186,7 +186,7 @@ class Test(Node):
 
     def __init__(self, print_statement):
 
-        super().__init__()
+        super(Node).__init__()
 
         self.print_statement = print_statement
 

@@ -148,12 +148,12 @@ class TreeBuilder:
 
     def attach_node(self, node):
 
-        parameters = []
+        parameters = {}
 
         specials = ['name', 'type', 'blackboard']
 
         for parameter in node: # Each parameter provided in the json is interpreted and used to initialize the node
-
+            
             if parameter == 'children': # Initializes all children recursively and appends them to a list which is then
                                         # passed as another parameter in the node
                 children = []
@@ -164,21 +164,22 @@ class TreeBuilder:
                             child = json.load(f)
                     children.append(self.attach_node(child))
                 
-                parameters.append(children)
+                parameters['children'] = children            
+
+            elif parameter == 'blackboard': # If the blackboard is passed as a parameter its contents are added to the tree blackboard
+
+                for var in node['blackboard']:
+                    
+                    if var[0] == '/':
+                        self.blackboard[var] = eval(node['blackboard'][var])
+                    else:
+                        self.blackboard[var] = node['blackboard'][var] 
+            
             elif parameter not in specials:
                 
-                parameters.append(node[parameter])
-
-        if 'blackboard' in node: # If the blackboard is passed as a parameter its contents are added to the tree blackboard
-
-            for var in node['blackboard']:
-                
-                if var[0] == '/':
-                    self.blackboard[var] = eval(node['blackboard'][var])
-                else:
-                    self.blackboard[var] = node['blackboard'][var] 
-
-        return eval(node['type'])(*parameters)
+                parameters[parameter] = node[parameter]
+        print(node['type'] + str(parameters))
+        return eval(node['type'])(**parameters)
 
 
     def draw_tree(self):
