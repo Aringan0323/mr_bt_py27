@@ -178,7 +178,6 @@ class TreeBuilder:
             elif parameter not in specials:
                 
                 parameters[parameter] = node[parameter]
-        print(node['type'] + str(parameters))
         return eval(node['type'])(**parameters)
 
 

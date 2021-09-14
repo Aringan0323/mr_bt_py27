@@ -1,0 +1,47 @@
+{
+    "name":"root",
+    "type":"Selector",
+    "children":[
+        {
+            "name":"wall_stop",
+            "type":"Sequencer",
+            "children":[
+                {   
+                    "name":"wall_ahead",
+                    "type":"WallAhead",
+                    "dist":0.8,
+                    "fov": 45.0,
+                    "blackboard":{
+                        "/scan":"LaserScan"
+                    }
+                },
+                {
+                    "name":"stop",
+                    "type":"Stop"
+                },
+                {
+                    "name":"turn",
+                    "type":"LinearAngularDynamic",
+                    "linear_var_name":"_",
+                    "angular_var_name":"ang_vel",
+                    "blackboard":{
+                        "_":0.0,
+                        "ang_vel":1.0
+                    }
+                }
+            ]
+        },
+        {
+            "name":"move_forward",
+            "type":"LinearAngularDynamic",
+            "linear_var_name":"lin_vel",
+            "angular_var_name":"__",
+            "blackboard":{
+                "lin_vel":0.1,
+                "__":0.0
+            }
+        }
+    ]
+}
+
+
