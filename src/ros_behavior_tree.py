@@ -33,13 +33,9 @@ class ROSBehaviorTree:
     '''
     def __init__(self, root, blackboard, rate = 0.034, print_vars=[]):
 
-        self.rate = rate
-
         self.print_vars = print_vars
         
         self.curr_tick = 1
-
-        self.last_tick_time = rospy.get_time()
 
         self.root = root
 
